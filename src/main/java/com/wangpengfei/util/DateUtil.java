@@ -7,38 +7,38 @@ import java.util.Date;
  * 
  * @ClassName: DateUtil
  * @Description: TODO
- * @author: ·ÉW1108
- * @date: 2020Äê1ÔÂ3ÈÕ ÏÂÎç4:06:36
+ * @author: ï¿½ï¿½W1108
+ * @date: 2020ï¿½ï¿½1ï¿½ï¿½3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½4:06:36
  */
 public class DateUtil {
 
-	// »ñÈ¡Ò»¸öÔÂµÄÔÂ³õ Èç £º2020-01-01 00:00:00
+	// ï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½Âµï¿½ï¿½Â³ï¿½ ï¿½ï¿½ ï¿½ï¿½2020-01-01 00:00:00
 	public static Date initMonth(Date date) {
-		// »ñÈ¡Ò»¸öÈÕÆÚÀà
+		// ï¿½ï¿½È¡Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Calendar c = Calendar.getInstance();
-		// ÓÃ´«ÈëµÄÈÕÆÚ³õÊ¼ÈÕÀúÀà
+		// ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		c.setTime(date);
 
-		c.set(Calendar.DAY_OF_MONTH, 1);// ÉèÖÃÎªµ±Ç°ÈÕÆÚµÄµÚÒ»Ìì
-		c.set(Calendar.HOUR_OF_DAY, 0);// ÉèÖÃĞ¡Ê±
-		c.set(Calendar.MINUTE, 0);// ·ÖÖÓ
-		c.set(Calendar.SECOND, 0);// Ãë
+		c.set(Calendar.DAY_OF_MONTH, 1);// ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ç°ï¿½ï¿½ï¿½ÚµÄµï¿½Ò»ï¿½ï¿½
+		c.set(Calendar.HOUR_OF_DAY, 0);// ï¿½ï¿½ï¿½ï¿½Ğ¡Ê±
+		c.set(Calendar.MINUTE, 0);// ï¿½ï¿½ï¿½ï¿½
+		c.set(Calendar.SECOND, 0);// ï¿½ï¿½
 		return c.getTime();
 
 	}
 
-	// ·µ»ØÒ»¸öÔÂÔÂÄ©
-	// Ë¼Â·£º ÈÃÔÂ¼Ó1 £¬ÔÙ±ä³ÉÔÂ³õ£¬×îºó¼õÈ¥1Ãë
+	// ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä©
+	// Ë¼Â·ï¿½ï¿½ ï¿½ï¿½ï¿½Â¼ï¿½1 ï¿½ï¿½ï¿½Ù±ï¿½ï¿½ï¿½Â³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥1ï¿½ï¿½
 	public static Date endMonth(Date date) {
 
 		Calendar c = Calendar.getInstance();
 		c.setTime(date);
-		// ÈÃÔÂ·İ+1
+		// ï¿½ï¿½ï¿½Â·ï¿½+1
 		c.add(Calendar.MONTH, 1);
-		// ÈÃÊ±¼ä±ä³ÉÔÂ³õ
+		// ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Â³ï¿½
 		Date initMonth = initMonth(c.getTime());
 		c.setTime(initMonth);
-		// ÈÃÈÕÆÚ¼õÈ¥1
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Ú¼ï¿½È¥1
 		c.add(Calendar.SECOND, -1);
 		return c.getTime();
 
@@ -47,52 +47,116 @@ public class DateUtil {
 	/**
 	 * 
 	 * @Title: getAgeByBirthday
-	 * @Description: Ê¹ÓÃÈÕÀúÀà ¼ÆËã £º¸ù¾İ³öÉúÈÕÆÚËãÄêÁä
+	 * @Description: Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½İ³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param date
 	 * @return
 	 * @return: int
 	 */
 	// 2020-02-02 2000-03-03
 	public static int getAgeByBirthday(Date date) {
-		// ÓÃÏµÍ³Ê±¼ä»ñÈ¡ÈÕÀúÀà
+		// ï¿½ï¿½ÏµÍ³Ê±ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Calendar c = Calendar.getInstance();
-		int s_year = c.get(Calendar.YEAR);// »ñÈ¡ÏµÍ³µÄÄê
-		int s_month = c.get(Calendar.MONTH);// »ñÈ¡ÏµÍ³µÄÔÂ
-		int s_day = c.get(Calendar.DAY_OF_MONTH);// »ñÈ¡ÏµÍ³µÄÈÕ
+		int s_year = c.get(Calendar.YEAR);// ï¿½ï¿½È¡ÏµÍ³ï¿½ï¿½ï¿½ï¿½
+		int s_month = c.get(Calendar.MONTH);// ï¿½ï¿½È¡ÏµÍ³ï¿½ï¿½ï¿½ï¿½
+		int s_day = c.get(Calendar.DAY_OF_MONTH);// ï¿½ï¿½È¡ÏµÍ³ï¿½ï¿½ï¿½ï¿½
 
-		// ÓÃ´«ÈëµÄÈÕÆÚ³õÊ¼»¯Ò»¸öÈÕÀúÀà
+		// ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú³ï¿½Ê¼ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		c.setTime(date);
-		int b_year = c.get(Calendar.YEAR);// »ñÈ¡³öÉúÈÕÆÚµÄÄê
-		int b_month = c.get(Calendar.MONTH);// »ñÈ¡³öÉúÈÕÆÚµÄÔÂ
-		int b_day = c.get(Calendar.DAY_OF_MONTH);// »ñÈ¡³öÉúÈÕÆÚµÄÈÕ
+		int b_year = c.get(Calendar.YEAR);// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½
+		int b_month = c.get(Calendar.MONTH);// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½
+		int b_day = c.get(Calendar.DAY_OF_MONTH);// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Úµï¿½ï¿½ï¿½
 
-		int age = s_year - b_year;// ÓÃÏµÍ³Äê -³öÉúÄê
+		int age = s_year - b_year;// ï¿½ï¿½ÏµÍ³ï¿½ï¿½ -ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-		if (s_month < b_month)// Èç¹ûÏµÍ³ÔÂĞ¡ÓÚ³öÉúÔÂÄêÁä¼õÒ»
+		if (s_month < b_month)// ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½Ğ¡ï¿½Ú³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
 			age--;
-		if (s_month == b_month && s_day < b_day)// Èç¹ûÏµÍ³ÔÂºÍ³õÊ¼ÔÂÒ»ÖÂ²¢ÇÒÏµÍ³ÈÕĞ¡ÓÚ³öÉúÈÕ ÄêÁä¼õÒ»
+		if (s_month == b_month && s_day < b_day)// ï¿½ï¿½ï¿½ÏµÍ³ï¿½ÂºÍ³ï¿½Ê¼ï¿½ï¿½Ò»ï¿½Â²ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½Ğ¡ï¿½Ú³ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò»
 			age--;
 		return age;
 
 	}
 
+	/*  è¿”å›æœˆæœ«
+	* æ–¹æ³•2ï¼š(5åˆ†)
+	* ç»™ä¸€ä¸ªæ—¶é—´å¯¹è±¡ï¼Œè¿”å›è¯¥æ—¶é—´æ‰€åœ¨æœˆçš„æœ€åæ—¥23æ—¶59åˆ†59ç§’ï¼Œéœ€è¦è€ƒè™‘æœˆå¤§æœˆå°å’ŒäºŒæœˆç‰¹æ®Šæƒ…å†µã€‚
+	* ä¾‹å¦‚ä¸€ä¸ªDateå¯¹è±¡çš„å€¼æ˜¯2019-05-18 11:37:22ï¼Œåˆ™è¿”å›çš„æ—¶é—´ä¸º2019-05-31 23:59:59
+	* ä¾‹å¦‚ä¸€ä¸ªDateå¯¹è±¡çš„å€¼æ˜¯2019-02-05 15:42:18ï¼Œåˆ™è¿”å›çš„æ—¶é—´ä¸º2019-02-28 23:59:59
+	*/
+	public static Date getDateByFullMonth(Date src){
+		//ç”¨ä¼ å…¥çš„æ—¥æœŸ,åˆå§‹åŒ–æ—¥å†ç±». ç„¶åè®©å½“å‰æ—¥æœŸè®¾ç½®ä¸ºä¸‹ä¸ªæœˆçš„æœˆåˆ,æœ€ååœ¨
+		//æœˆåˆå‡å» 1ç§’.  å°±èƒ½å˜æˆä¼ å…¥æ—¥æœŸçš„æœˆæœ«äº†
+		
+		Calendar c = Calendar.getInstance();
+		c.setTime(src);
+		//è®©å½“å‰æœˆä»½åŠ 1
+		c.add(Calendar.MONTH, 1);
+		//è·å–æœˆåˆ
+		Date monthStart = getDateByInitMonth(c.getTime());
+		//ç”¨æœˆåˆåˆå§‹åŒ–æ—¥å†ç±»
+		c.setTime(monthStart);
+		//ç”¨æœˆåˆæ—¶é—´  -1 ç§’
+		c.add(Calendar.SECOND, -1);
+		
+		return  c.getTime();
+		
+	}
+	
+	
+	
+	/*è¿”å›æœˆåˆ
+	* æ–¹æ³•1ï¼š(5åˆ†)
+	* ç»™ä¸€ä¸ªæ—¶é—´å¯¹è±¡ï¼Œè¿”å›è¯¥æ—¶é—´æ‰€åœ¨æœˆçš„1æ—¥0æ—¶0åˆ†0ç§’ã€‚ä¾‹å¦‚ä¸€ä¸ªDateå¯¹è±¡çš„å€¼æ˜¯2019-05-18 11:37:22
+	* åˆ™è¿”å›çš„ç»“æœä¸º2019-05-01 00:00:00
+	* 
+	*/
+	public static Date getDateByInitMonth(Date src){
+	
+		
+	    //è·å–Calendarå¯¹è±¡
+		Calendar c = Calendar.getInstance();
+		  //ç”¨ä¼ å…¥çš„æ—¶é—´åˆå§‹åŒ–æ—¥å†å¯¹è±¡
+		c.setTime(src);
+		
+		//æ”¹å˜æ—¥æœŸçš„ æ—¥,æ—¶,åˆ†.ç§’
+		
+		c.set(Calendar.DATE, 1);
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
+		
+		return c.getTime();
+		
+	}
+	
+	
 	/**
 	 * 
-	 * @Title: randomDate
-	 * @Description: Ëæ»ú·µ»ØÒ»¸öÔÚstart--end Ö®¼äµÄÈÕÆÚ
-	 * @param start
-	 * @param end
+	 * @Title: randomDate 
+	 * @Description: è¿”å›åœ¨æŸä¸ªæ—¥æœŸåŒºé—´çš„éšæœºæ—¥æœŸ
+	 * @param startDate
 	 * @return
 	 * @return: Date
 	 */
-	public static Date randomDate(Date start, Date end) {
-		// »ñÈ¡¿ªÊ¼ÈÕÆÚµÄºÁÃëÊı
-		long t1 = start.getTime();
-		// »ñÈ¡½áÊøÈÕÆÚµÄºÁÃëÊı
-		long t2 = end.getTime();
-
-		long t = (long) ((Math.random() * (t2 - t1) + 1) + t1);
-
-		return new Date(t);
+	public static Date randomDate(Date startDate) {
+		//ç”¨å½“å‰æ—¶é—´è·å–æ—¥å†ç±»
+		Calendar c = Calendar.getInstance();
+		//å½“å‰æ—¶é—´çš„æ¯«ç§’å€¼..  å³ä»1970åˆ°ç°åœ¨çš„æ¯«ç±³æ•°
+		long endMillis = c.getTimeInMillis();
+	//	System.out.println("endMillis="+endMillis);
+		
+		//ç”¨ä¼ å…¥çš„æ—¥æœŸåˆå§‹åŒ–æ—¥å†ç±»Calendar
+		
+		c.setTime(startDate);
+		//è·å–å¼€å§‹æ—¶é—´çš„æ¯«ç±³æ•°
+		long startMillis = c.getTimeInMillis();
+	//	System.out.println("startMillis="+startMillis);
+		
+		 long x = (long)( Math.random() * (endMillis - startMillis  +1)) + startMillis;
+		//	System.out.println("x="+x);
+		 
+	//ç”¨æ—¶é—´å·®åˆ›å»ºæ—¥å†ç±»
+		 c.setTimeInMillis(x);
+		
+		return  c.getTime();
 	}
 }

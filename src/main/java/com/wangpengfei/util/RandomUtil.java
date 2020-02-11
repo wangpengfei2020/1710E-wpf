@@ -2,59 +2,90 @@ package com.wangpengfei.util;
 
 import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * 
  * @ClassName: RandomUtil
  * @Description: TODO
- * @author: ·ÉW1108
- * @date: 2020Äê1ÔÂ3ÈÕ ÉÏÎç9:29:34
+ * @author: ï¿½ï¿½W1108
+ * @date: 2020ï¿½ï¿½1ï¿½ï¿½3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½9:29:34
  */
 public class RandomUtil {
 
-	// ·½·¨1£º·µ»Ømin-maxÖ®¼äµÄËæ»úÕûÊı£¨°üº¬minºÍmaxÖµ£©£¬ÀıÈç·µ»Ø1-3Ö®¼äµÄËæ»úÊı£¬ÄÇÃ´·µ»Ø1»ò2»ò3¶¼ÊÇÕıÈ·µÄ£¬·µ»Ø4¾Í²»¶Ô¡£ (5·Ö)
-
-	public static int random(int min, int max) {
-
-		Random r = new Random();
-		int num = r.nextInt(max - min + 1) + min;
-		// System.out.println(num);
-		return num;
-
-	}
-
-	// ·½·¨2£ºÔÚ×îĞ¡ÖµminÓë×î´óÖµmaxÖ®¼ä½ØÈ¡subs¸ö²»ÖØ¸´µÄËæ»úÊı¡£ÀıÈçÔÚ1-10Ö®¼äÈ¡3¸ö²»ÖØ¸´µÄËæ»úÊı£¬ÄÇÃ´[2,6,9]ÊÇ¶ÔµÄ£¬[3,5,5]Ôò²»¶Ô£¬ÒòÎª5ÖØ¸´ÁË¡£Ó¦ÓÃ³¡¾°£ºÔÚ100ÆªÎÄÕÂÖĞËæ»úÈ¡10ÆªÎÄÕÂ£¬ÔÂ¿¼¿ÉÄÜ»áÊ¹ÓÃµ½¡£
-	// (8·Ö)
-	public static int[] subRandom(int min, int max, int subs) {
-		int[] x = new int[subs];// ÉùÃ÷Êı×éÓÃÀ´´æ·Å½á¹ûÖµ
-
-		HashSet<Integer> set = new HashSet<Integer>();
-		while (set.size() != subs) {
-			set.add(random(min, max));
+	//æ–¹æ³•3ï¼šè¿”å›1ä¸ª1-9,a-Zä¹‹é—´çš„éšæœºå­—ç¬¦ã€‚ (8åˆ†)
+		public static char randomCharacter (){
+			//ç©·ä¸¾1-9,a-Zçš„å­—ç¬¦
+			String str = "123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
+		//	charAt(index).æ ¹æ®ä¸‹æ ‡è¿”å›å­—ç¬¦ä¸²çš„å€¼
+			return str.charAt(random(0, str.length()-1));
 		}
-
-		int i = 0;
-		for (Integer integer : set) { // °Ñset¼¯ºÏ·ÅÈëÊı×éÖĞ
-			x[i] = integer;
-			i++;
+		//æ–¹æ³•4ï¼šè¿”å›å‚æ•°lengthä¸ªå­—ç¬¦ä¸²(5åˆ†)ï¼Œæ–¹æ³•å†…éƒ¨è¦è°ƒç”¨randomCharacter()æ–¹æ³• (4åˆ†)
+		public static String randomString(int length){
+			StringBuilder sb = new StringBuilder();
+			for(int i=0;i<length;i++) {
+				sb.append(randomCharacter());
+			}
+			return sb.toString();
 		}
-		return x;
-
-	}
-
-	// ·½·¨3£º·µ»Ø1¸ö1-9,a-ZÖ®¼äµÄËæ»ú×Ö·û¡£ (8·Ö)
-	public static char randomCharacter() {
-		String str = "123456789qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM";
-		return str.charAt(random(0, str.length() - 1));
-	}
-
-	// ·½·¨4£º·µ»Ø²ÎÊılength¸ö×Ö·û´®(5·Ö)£¬·½·¨ÄÚ²¿Òªµ÷ÓÃrandomCharacter()·½·¨ (4·Ö)
-	public static String randomString(int length) {
-		String str = "";
-		for (int i = 0; i < length; i++) {
-			str += randomCharacter();
+		
+		
+		
+		
+		/**
+		 * 
+		 * @Title: subRandom 
+		 * @Description: æ–¹æ³•2ï¼šåœ¨æœ€å°å€¼minä¸æœ€å¤§å€¼maxä¹‹é—´æˆªå–subsä¸ªä¸é‡å¤çš„éšæœºæ•°ã€‚
+		 * ä¾‹å¦‚åœ¨1-10ä¹‹é—´å–3ä¸ªä¸é‡å¤çš„éšæœºæ•°ï¼Œé‚£ä¹ˆ[2,6,9]æ˜¯å¯¹çš„ï¼Œ
+		 * [3,5,5]åˆ™ä¸å¯¹ï¼Œå› ä¸º5é‡å¤äº†ã€‚åº”ç”¨åœºæ™¯ï¼š
+		 * åœ¨100ç¯‡æ–‡ç« ä¸­éšæœºå–10ç¯‡æ–‡ç« ï¼Œæœˆè€ƒå¯èƒ½ä¼šä½¿ç”¨åˆ°ã€‚ (8åˆ†)
+		 * @param min
+		 * @param max
+		 * @param subs
+		 * @return
+		 * @return: int[]
+		 */
+		public static int[] subRandom (int min, int max, int subs){
+			//å®šä¹‰æ•°ç»„
+			int[] values= new int[subs];
+			//ç”¨æ¥å­˜æ”¾ä¸é‡å¤çš„æ•°æ®
+			Set<Integer> set = new HashSet<>();
+			//å¦‚æœseté›†åˆä¸­æ•°æ®å’Œsubsä¸€è‡´åˆ™è·³å‡ºå¾ªç¯
+			while (set.size()!=subs) {
+				set.add(random(min, max));
+			}
+			
+			//éå†setæ”¾å…¥æ•°ç»„
+			int j=0;
+			for (Integer integer : set) {
+				values[j]=integer;
+				j++;
+			}
+			return values;
+		
 		}
-		return str;
-	}
+		
+		
+		
+		
+		/**
+		 * 
+		 * @Title: random 
+		 * @Description: æ–¹æ³•1ï¼šè¿”å›min-maxä¹‹é—´çš„éšæœºæ•´æ•°ï¼ˆåŒ…å«minå’Œmaxå€¼ï¼‰ï¼Œ
+		 * ä¾‹å¦‚è¿”å›1-3ä¹‹é—´çš„éšæœºæ•°ï¼Œé‚£ä¹ˆè¿”å›1æˆ–2æˆ–3éƒ½æ˜¯æ­£ç¡®çš„ï¼Œ
+		 * è¿”å›4å°±ä¸å¯¹ã€‚ (5åˆ†)
+		 * @param min
+		 * @param max
+		 * @return
+		 * @return: int
+		 */                     
+		public static int random(int min, int max){
+			//å®ä¾‹åŒ–ä¸€ä¸ªRandom ç±»
+			Random r = new Random();
+			//nextInt è¿”å›çš„æ˜¯ä¸€ä¸ªå°äºmaxçš„éšæœºæ•´æ•°,å¦‚max=10.åˆ™èŒƒæ¹– 0-9ä¹‹é—´çš„æ•°å€¼
+			return r.nextInt(max - min  + 1 )  +min;
+			
+		
+		}
 
 }

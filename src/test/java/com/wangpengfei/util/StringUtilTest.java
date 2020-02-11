@@ -1,9 +1,13 @@
 package com.wangpengfei.util;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import org.junit.Test;
 
 public class StringUtilTest {
-
+	
 	@Test
 	public void testHasLength() {
 		boolean b = StringUtil.hasLength(" ");
