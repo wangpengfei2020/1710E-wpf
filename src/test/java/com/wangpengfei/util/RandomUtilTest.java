@@ -1,5 +1,7 @@
 package com.wangpengfei.util;
 
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 
 import com.wangpengfei.util.RandomUtil;
@@ -8,10 +10,9 @@ public class RandomUtilTest {
 
 	@Test
 	public void testRandom() {
-		for (int i = 0; i < 5; i++) {
-			RandomUtil.random(1, 20);
+		for (int i = 0; i <50; i++) {
+			RandomUtil.random(1, 3);
 		}
-		
 	}
 
 	@Test
@@ -21,12 +22,12 @@ public class RandomUtilTest {
 
 	@Test
 	public void testRandomCharacter() {
-		
+	
 	}
 
 	@Test
 	public void testRandomString() {
-		String string = RandomUtil.randomString(4);
+		String string = RandomUtil.randomString(6);
 		System.out.println(string);
 	}
 

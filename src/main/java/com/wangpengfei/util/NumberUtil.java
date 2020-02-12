@@ -1,25 +1,25 @@
 package com.wangpengfei.util;
-
 /**
- * }
  * 
- * @ClassName: NumberUtil
+ * @ClassName: NumberUtil 
  * @Description: TODO
- * @author: ·ÉW1108
- * @date: 2020Äê1ÔÂ3ÈÕ ÏÂÎç4:08:00
+ * @author: charles
+ * @date: 2020ï¿½ï¿½1ï¿½ï¿½3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½10:23:15
  */
 public class NumberUtil {
 
 	/**
 	 * 
-	 * @Title: isNumber
-	 * @Description: ÅÐ¶ÏÊÇ·ñÊÇÊý×Ö
+	 * @Title: isNumber 
+	 * @Description: ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * @param src
 	 * @return
 	 * @return: boolean
 	 */
 	public static boolean isNumber(String src) {
-		String reg = "^(-)?[0-9]+(\\.[0-9]+)?$";
+		String reg ="^(-)?[0-9]+(\\.[0-9]+)?$";
 		return src.matches(reg);
 	}
+
+	
 }
